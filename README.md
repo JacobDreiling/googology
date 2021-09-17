@@ -5,6 +5,8 @@ The top method is a helper function that can be used to view a function's calcul
 
 The name of each function/notation is provided, as well as its strength in the <a href="https://en.m.wikipedia.org/wiki/Fast-growing_hierarchy">fast-growing hierarchy</a> and character length. Each program is sorted first by its growth rate, followed by its length.
 
+The naga function is still being prototyped. It is an attempt at extending hydras to higher levels; for example, KP hydras are level 1 and Buchholz hydras are level 2.
+
 ## References
 Ackermann Function - https://en.m.wikipedia.org/wiki/Ackermann_function<br>
 Fast-Growing Hierarchy - https://en.m.wikipedia.org/wiki/Fast-growing_hierarchy<br>
