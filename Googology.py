@@ -53,18 +53,17 @@ def VR(V):
 	return k
 
 
-#Laver tables: ??, 145
+#Laver tables: ??, 136
 def q(n):
-	m=0
-	t=1
+	p=0
+	m=t=1
+	T=lambda a,b:(a+1)%m if b<1else T(T(a,b-1),T(a,0))
 	while t<2**n:
-		m+=1
-		r=range(1,2**m)
-		L=[[i]for i in r]+[[0]]
-		for S in L[::-1]:
-			for i in r:S+=[L[S[-1]][S[0]]]
-		while 2**m//t*L[0][:t]!=L[0]:t*=2
-	return m
+		p+=1
+		m*=2
+		L=[T(0,i)for i in range(m)]
+		while m//t*L[:t]!=L:t*=2
+	return p
 
 
 #Super Ackermann function: ω^2, 83
@@ -124,6 +123,26 @@ def n(k):
 	L=1
 	while 1in[F(s)for s in M(L)]:L+=1
 	return L-1
+
+
+#Multidimensional arrays: ω^(ω^ω), 213
+def multi(A):
+	U=A[0]
+	D=A[1]
+	while any(U[1:]):
+		i=1
+		a=U[0]
+		while U[i]<1:i+=1
+		d=D[i]
+		if d:
+			j=i-1
+			while j and D[j]<d:j-=1
+			U[j:i]=[a]*a
+			D[j+1:i]=[d-1]*(a-1)
+			i=j+a
+		else:U[i-1]=a if i>1else 1if a<1else multi([[a-1]+U[1:],D[:]])
+		U[i]-=1
+	return U[0]+1
 
 
 #Tame fusible margins: ε_0, 60
